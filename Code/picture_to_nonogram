@@ -1,21 +1,17 @@
-import cv2
+import numpy as np
+from PIL import Image
 import matplotlib.pyplot as plt
 
-
 #read the image from path
-image = cv2.imread('C:/Users/nickl/Desktop/Deep learning projekt/Deep-Learning-Project/koala.jpg')
+image = Image.open('C:/Users/nickl/Desktop/Deep learning projekt/Deep-Learning-Project/Data/pikachu.jpg')
 
-image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
-#Convert an image from BGR to grayscale mode 
-gray_image = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
+#Convert the image to right format
+bw_pixilated_image = image.convert('L').point(lambda x: 0 if x > 128 else 255, '1').resize((50,50))
 
-#Convert a grayscale image to black and white using binary thresholding 
-(thresh, BnW_image) = cv2.threshold(gray_image, 125, 255, cv2.THRESH_BINARY)
+#plt.imshow(grey)
+#plt.show()
 
-#display all the images
-plt.imshow(image)
-plt.show
-
-
-#plt.imshow(image)
+# nonogram to numpy matrix
+nonogram_matrix = np.array(bw_pixilated_image).astype(int)
+print(nonogram_matrix)
 
