@@ -1,0 +1,21 @@
+import cv2
+import matplotlib.pyplot as plt
+
+
+#read the image from path
+image = cv2.imread('C:/Users/nickl/Desktop/Deep learning projekt/Deep-Learning-Project/koala.jpg')
+
+image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
+#Convert an image from BGR to grayscale mode 
+gray_image = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
+
+#Convert a grayscale image to black and white using binary thresholding 
+(thresh, BnW_image) = cv2.threshold(gray_image, 125, 255, cv2.THRESH_BINARY)
+
+#display all the images
+plt.imshow(image)
+plt.show
+
+
+#plt.imshow(image)
+
