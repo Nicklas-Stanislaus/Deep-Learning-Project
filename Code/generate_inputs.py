@@ -1,7 +1,11 @@
-def generate_inputs(nonogram_picture):    
+#import numpy as np
+
+def generate_inputs(nonogram_picture):  
+    """Function for generating the inputs of a given nonogram. 
+    Input can be either numpy array or list.  
+    """
     out = []
     for mode in ("rows", "columns"): 
-        
         #If working with columns transpose nonogram picture
         if mode == "columns": 
             nonogram_picture = list(map(list, zip(*nonogram_picture)))
@@ -20,4 +24,4 @@ def generate_inputs(nonogram_picture):
             inputs = list(map(list, zip(*inputs)))
         
         out.append(inputs)
-    return out
+    return np.array(out)
